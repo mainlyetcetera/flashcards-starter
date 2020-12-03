@@ -40,19 +40,18 @@ describe('Round', () => {
   describe('takeTurn', () => {
     let newTurn, guess, correctAnswer, currentCard;
 
-    it.skip('should know what turn it\'s on', () => {
-      round.takeTurn(guess);
+    beforeEach(() => {
+      guess = turn.answer;
+      newTurn = round.takeTurn(guess);      
+      correctAnswer = cards[0].correctAnswer;
+      currentCard = turn.card;
+    });
+
+    it('should know what turn it\'s on', () => {      
       expect(round.turns).to.equal(1);
 
       round.takeTurn(guess);
       expect(round.turns).to.equal(2);
-    });
-
-    beforeEach(() => {
-      newTurn = round.takeTurn(guess);
-      guess = turn.answer;
-      correctAnswer = cards[0].correctAnswer;
-      currentCard = turn.card;
     });
 
     it.skip('should make a new Turn instance', () => {
