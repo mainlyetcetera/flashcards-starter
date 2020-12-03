@@ -57,7 +57,7 @@ describe('Round', () => {
     it('should make a new Turn instance', () => {
       const newTurn = round.takeTurn(guess);
 
-      expect(newTurn).to.be.an.instanceof(Round);
+      expect(newTurn).to.be.an.instanceof(Turn);
     });
 
     it.skip('should update turn count upon correct answer', () => {      
