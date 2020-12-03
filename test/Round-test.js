@@ -65,7 +65,8 @@ describe('Round', () => {
       expect(round.turns).to.equal(1);
     });
     
-    it.skip('should update turn count upon incorrect answer', () => {
+    it('should update turn count upon incorrect answer', () => {
+      guess = '6';
       expect(guess).to.not.be.equal(correctAnswer);
       expect(round.turns).to.equal(1);
     });
