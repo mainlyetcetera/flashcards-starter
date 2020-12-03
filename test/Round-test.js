@@ -41,17 +41,17 @@ describe('Round', () => {
     let newTurn, guess, correctAnswer, currentCard;
 
     beforeEach(() => {
-      guess = turn.answer;
-      newTurn = round.takeTurn(guess);      
+      guess = turn.answer;      
       correctAnswer = cards[0].correctAnswer;
       currentCard = turn.card;
     });
 
-    it('should know what turn it\'s on', () => {      
-      expect(round.turns).to.equal(1);
+    it('should know what turn it\'s on', () => {  
+      round.takeTurn(guess);    
+      expect(round.turns).to.equal(2);
 
       round.takeTurn(guess);
-      expect(round.turns).to.equal(2);
+      expect(round.turns).to.equal(3);
     });
 
     it('should make a new Turn instance', () => {
@@ -60,22 +60,26 @@ describe('Round', () => {
       expect(newTurn).to.be.an.instanceof(Turn);
     });
 
-    it('should update turn count upon correct answer', () => {      
+    it('should update turn count upon correct answer', () => {
+      round.takeTurn(guess);
       expect(guess).to.be.equal(correctAnswer);
-      expect(round.turns).to.equal(1);
+      expect(round.turns).to.equal(2);
     });
     
     it('should update turn count upon incorrect answer', () => {
+      round.takeTurn(guess);
       guess = '6';
       expect(guess).to.not.be.equal(correctAnswer);
-      expect(round.turns).to.equal(1);
+      expect(round.turns).to.equal(2);
     });
 
-    it.skip('should make next card current card', () => {
-      expect(currentCard).to.be.deep.equal(cards[0]);
+    it('should make next card current card', () => {      
+      expect(round.returnCurrentCard()).to.be.deep.equal(currentCard);
 
-      round.takeTurn(guess);
-      expect(currentCard).to.be.deep.equal(cards[1]);
+      const nextTurn = round.takeTurn(guess);
+      currentCard = nextTurn.card;
+
+      expect(round.returnCurrentCard()).to.be.deep.equal(currentCard);
     });
 
     it.skip('should say correct guess is correct', () => {
