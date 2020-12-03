@@ -60,7 +60,7 @@ describe('Round', () => {
       expect(newTurn).to.be.an.instanceof(Turn);
     });
 
-    it.skip('should update turn count upon correct answer', () => {      
+    it('should update turn count upon correct answer', () => {      
       expect(guess).to.be.equal(correctAnswer);
       expect(round.turns).to.equal(1);
     });
