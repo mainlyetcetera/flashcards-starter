@@ -54,7 +54,7 @@ describe('Round', () => {
       expect(round.turns).to.equal(2);
     });
 
-    it.skip('should make a new Turn instance', () => {
+    it('should make a new Turn instance', () => {
       const newTurn = round.takeTurn(guess);
 
       expect(newTurn).to.be.an.instanceof(Round);
