@@ -4,7 +4,7 @@ const util = require('./util');
 
 class Round {
   constructor(deck) {
-    this.deck = deck;
+    this.deck = deck;    
   }
 
   returnCurrentCard() {
