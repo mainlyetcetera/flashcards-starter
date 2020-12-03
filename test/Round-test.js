@@ -17,7 +17,7 @@ describe('Round', () => {
     
     deck = new Deck(cards);
     
-    turn = new Turn('9', card1);
+    turn = new Turn(card1, '9');
     guess = turn.answer;
 
     round = new Round(deck);
@@ -46,16 +46,18 @@ describe('Round', () => {
       currentCard = turn.card;
     });
 
+
+
     it('should know what turn it\'s on', () => {  
       round.takeTurn(guess);    
-      expect(round.turns).to.equal(2);
+      expect(round.turns).to.equal(1);
 
       round.takeTurn(guess);
-      expect(round.turns).to.equal(3);
+      expect(round.turns).to.equal(2);
     });
 
     it('should make a new Turn instance', () => {
-      const newTurn = round.takeTurn(guess);
+      const newTurn = round.takeTurn(guess).newTurn;
 
       expect(newTurn).to.be.an.instanceof(Turn);
     });
@@ -63,32 +65,31 @@ describe('Round', () => {
     it('should update turn count upon correct answer', () => {
       round.takeTurn(guess);
       expect(guess).to.be.equal(correctAnswer);
-      expect(round.turns).to.equal(2);
+      expect(round.turns).to.equal(1);
     });
     
     it('should update turn count upon incorrect answer', () => {
       round.takeTurn(guess);
       guess = '6';
       expect(guess).to.not.be.equal(correctAnswer);
-      expect(round.turns).to.equal(2);
+      expect(round.turns).to.equal(1);
     });
 
-    it('should make next card current card', () => {      
+    it('should make next card current card', () => {    
       expect(round.returnCurrentCard()).to.be.deep.equal(currentCard);
-
-      const nextTurn = round.takeTurn(guess);
-      currentCard = nextTurn.card;
-
-      expect(round.returnCurrentCard()).to.be.deep.equal(currentCard);
+     
+      const stuff = round.takeTurn(guess).newCard;     
+      currentCard = round.currentCard;
+      expect(round.returnCurrentCard()).to.be.deep.equal(stuff);
     });
 
-    it.skip('should say correct guess is correct', () => {
+    it('should say correct guess is correct', () => {      
       expect(guess).to.equal(correctAnswer);
-      expect(turn.evaluateGuess()).to.equal(true);
+      expect(round.takeTurn(guess).eval).to.equal(true);
     });
 
-    it.skip('should say incorrect guess is incorrect', () => {
-      const turn = new Turn('mainlyetcetera', card);
+    it('should say incorrect guess is incorrect', () => {
+      const turn = new Turn(card1, 'mainlyetcetera');
     
       expect(turn.answer).to.not.equal(correctAnswer);
       expect(turn.evaluateGuess()).to.equal(false);
