@@ -29,8 +29,8 @@ describe('Round', () => {
     expect(round).to.be.an.instanceof(Round);
   });
 
-  it('should have the first card of the deck saved', () => {
-    expect(round.returnCurrentCard()).to.deep.equal(deck.cards[0]);
+  it('should have the first card of the deck saved', () => {  
+    expect(round.returnCurrentCard()).to.deep.equal(deck.cards[0]);    
   });
 
   it.skip('should have a deck property which is a list of cards', () => {
