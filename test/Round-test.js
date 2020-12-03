@@ -5,7 +5,6 @@ const Round = require('../src/Round');
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 const Turn = require('../src/Turn');
-const Game = require('../src/Game');
 
 describe('Round', () => {
   let card1, card2, card3, cards, deck, turn, round, guess;
