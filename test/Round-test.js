@@ -96,7 +96,7 @@ describe('Round', () => {
       expect(eval).to.equal(false);
     });
 
-    it.skip('should return "correct" feedback for correct guesses', () => {
+    it('should return "correct" feedback for correct guesses', () => {
       expect(turn.feedback).to.equal('correct!');
     });
 
