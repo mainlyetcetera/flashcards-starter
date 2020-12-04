@@ -61,12 +61,12 @@ describe('Game', () => {
       expect(testDeck.cards[1]).to.deep.equal(card2);
     });
 
-    it.skip('should add cards to deck', () => {
+    it('should add cards to deck', () => {
       game.start(cardProps);
-      const testDeck = game.round.deck;
+      const testDeck = game.deck;
 
-      expect(testDeck.cards).to.have.a.lengthof(2);
-      expect(testDeck.cards).to.deep.equal([card1, card2]);
+      expect(testDeck.cards).to.have.a.lengthOf(3);
+      expect(testDeck.cards).to.deep.equal([card1, card2, card3]);
     });
 
     it.skip('should create a new Round', () => {
