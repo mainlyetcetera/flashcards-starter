@@ -8,7 +8,7 @@ const Turn = require('../src/Turn');
 const Game = require('../src/Game');
 
 describe('Game', () => {
-  let game;
+  let card1, card2, card3, cards, deck, turn, guess, round, game;
 
   beforeEach(() => {
     card1 = new Card(1, '4 + 5', ['6', '7', '9'], '9');
@@ -26,7 +26,7 @@ describe('Game', () => {
   });
 
   it('should have currentRound property', () => {
-    expect(game.round).to.be.an.instanceof(Round);
+    expect(game.currentRound).to.be.an.instanceof(Round);
   });
 
   describe('start method', () => {
