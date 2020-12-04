@@ -107,10 +107,13 @@ describe('Round', () => {
     });
 
     it('should store incorrect guesses in incorrect guesses property', () => {
+      round.takeTurn('42');
       expect(round.incorrectGuesses).lengthOf(1);
+      expect(round.incorrectGuesses).to.deep.equal(['42']);
 
-      round.takeTurn(guess);
+      round.takeTurn('blah');
       expect(round.incorrectGuesses).lengthOf(2);
+      expect(round.incorrectGuesses).to.deep.equal(['42', 'blah']);
     });  
   });
 
