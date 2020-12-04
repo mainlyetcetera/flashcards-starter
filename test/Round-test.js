@@ -136,7 +136,7 @@ describe('Round', () => {
       expect(round.calculatePercentCorrect()).to.equal(67);
     });
 
-    it.skip('should be able to end the round', () => {
+    it('should be able to end the round', () => {
       round.takeTurn(guess); // correct
       round.takeTurn(guess); // incorrect
       const perc = Math.round(round.calculatePercentCorrect() * 100);
