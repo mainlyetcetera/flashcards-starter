@@ -38,15 +38,13 @@ describe('Round', () => {
   });
 
   describe('takeTurn', () => {
-    let newTurn, guess, correctAnswer, currentCard;
+    let guess, correctAnswer, currentCard;
 
     beforeEach(() => {
       guess = turn.answer;      
       correctAnswer = cards[0].correctAnswer;
       currentCard = turn.card;
     });
-
-
 
     it('should know what turn it\'s on', () => {  
       round.takeTurn(guess);    
@@ -109,33 +107,37 @@ describe('Round', () => {
     it('should store incorrect guesses in incorrect guesses property', () => {
       round.takeTurn('42');
       expect(round.incorrectGuesses).lengthOf(1);
-      expect(round.incorrectGuesses).to.deep.equal(['42']);
+      expect(round.incorrectGuesses).to.deep.equal([1]);
 
       round.takeTurn('blah');
       expect(round.incorrectGuesses).lengthOf(2);
-      expect(round.incorrectGuesses).to.deep.equal(['42', 'blah']);
+      expect(round.incorrectGuesses).to.deep.equal([1, 2]);
     });  
   });
 
   describe('the end game', () => {
     
-    it.skip('should have an incorrectGuesses property', () => {
+    it('should have an incorrectGuesses property', () => {
       expect(round.incorrectGuesses).to.be.an('array');
       expect(round.incorrectGuesses).to.not.equal(undefined);
     });
 
-    it.skip('should be able to calculate percentage of correct answers', () => {
-      round.takeTurn(guess); // correct
-      round.takeTurn(guess); // incorrect
+    it('should be able to calculate percentage of correct answers', () => {
+      round.takeTurn(guess);
+      round.takeTurn('blah');
 
       expect(round.turns).to.equal(2);
-      expect(round.calculatePercentCorrect()).to.equal(50);  
+      expect(round.calculatePercentCorrect()).to.equal(50);
+
+      round.takeTurn('rawr');
+
+      expect(round.calculatePercentCorrect()).to.equal(67);
     });
 
-    it.skip('should be able to end the round', () => {
-      round.takeTurn(guess); // correct
-      round.takeTurn(guess); // incorrect
-      const perc = Math.round(round.calculatePercentCorrect() * 100);
+    it('should be able to end the round', () => {
+      round.takeTurn(guess);
+      round.takeTurn('blah');
+      const perc = round.calculatePercentCorrect();
       const gameEnd = round.endRound();
 
       expect(gameEnd).to.equal(`Round over! You answered ${perc}% of the questions correctly!`);

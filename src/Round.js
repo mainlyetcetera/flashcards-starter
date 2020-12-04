@@ -26,9 +26,9 @@ class Round {
     this.eval = this.turn.evaluateGuess();
     this.feedback = this.turn.giveFeedback();
     if (!this.eval) {
-      this.incorrectGuesses.push(guess);
+      this.incorrectGuesses.push(this.currentCard.id);
     }
-  }
+  }  
 
   takeTurn(guess) {    
     this.turns++;
@@ -41,6 +41,14 @@ class Round {
       newTurn: this.turn,
       newCard: this.returnCurrentCard()
     };
+  }
+
+  calculatePercentCorrect() {
+    return Math.round((this.incorrectGuesses.length / this.turns) * 100);
+  }
+
+  endRound() {
+    return `Round over! You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
   }
 }
 
