@@ -5,12 +5,17 @@ const Card = require('./Card');
 const Round = require('./Round');
 
 class Game {
-  constructor(deck, round) {
+  constructor(deck, round = new Round(deck)) {
     this.deck = deck;
     this.currentRound = round;
   }
 
+  startNewRound() {
+    this.currentRound = new Round(this.deck);
+  }
+
   start(properties) {
+    this.startNewRound();
     return properties.map(setOfProperties => new Card(setOfProperties.id, setOfProperties.question, setOfProperties.answers, setOfProperties.correctAnswer));
   }
 

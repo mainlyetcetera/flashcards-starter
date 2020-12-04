@@ -70,7 +70,8 @@ describe('Game', () => {
     });
 
     it('should create a new Round', () => {
-      const newRound = game.start(cardProps);
+      game.start(cardProps);
+      const newRound = game.currentRound;
 
       expect(newRound).to.be.an.instanceof(Round);
     });
