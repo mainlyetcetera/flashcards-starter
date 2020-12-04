@@ -1,79 +1,54 @@
-# FlashCards Starter Kit
-
-## Fork This Repo
-
-On the top right corner of this page, click the **Fork** button.
-
-## Setup
-
-Clone down the forked repo (from your GitHub). Since you don't want to name your project "flashcards-starter", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments):
-
-```bash
-git clone [remote-address] [what you want to name the repo]
-```
-
-Once you have cloned the repo, change into the directory and install the library dependencies. Run:
-
-```bash
-npm install
-```
-
-To verify that it is setup correctly, run `npm test` in your terminal. You should have 5 pending tests in your `Card` test file that show up.
-
-Running `node index.js` from the root of your project should result in the following message being displayed in your terminal: 
-
-```bash
-Node server running on port 3000
-```
-
-*Note that you will not need to you run your server until you are instantiating your `Game` class in Iteration 3. Prior to that, you should be using TDD to drive your code. You should check the functionality of your application by running your tests via `npm test`.*
-
-
-## Where to Add Your Code
-
-### JavaScript
-
-**Create all of your feature code files in the `src` directory.**
-
-We will be using the `module.exports` and `require` syntax to share code across files.
-
-## How to View Your Code in Action
-
-Once you are working through Iteration 3, you will want to start your server to test your functionality.
-In the terminal, run:
-
-```bash
-node index.js
-```
-
-When the game is functioning appropriately, you will be prompted for each question, have the opportunity to select an answer, and will be given feedback. You will be able to play through the entire deck of cards:
-
-![flash cards example gif](https://media.giphy.com/media/1zkb1q58eTiTH6D7wc/giphy.gif)
+# Flashcards
 
 ---
 
-## Test Files Organization
+## Table of Contents
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [gif](#gif)
+- [Challenges](#challenges)
+- [Wins](#wins)
+- [Comments](#comments}
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `Round-test.js`.
+## Introduction
 
-## Running Your Tests
+The aim of Flashcards was to build an interactive app functioning completely from the command line. The project encouraged use of Test-Driven Development to test the separate classes involved, ensuring they were functional, as it was harder to "see" if they worked due to the lack of a DOM.
 
-Run your test suite using the command:
+## Technologies
 
-```bash
-npm test
-```
+- JavaScript (ES5, ES6)
+- Node.js
+- Chai
+- Mocha
 
-The test results will output to the terminal.
+## Gif
+
+I unfortunately have no gif as I could not get the game to run...
+
+## Challenges
+
+- test logic often had to be re-written
+  - early attempts at tests often forgot where data should be coming from
+    - many tests would use classes not actually needed for the test file
+- could not make game run from command line
+  - I am not sure where to actually get the game to run and what it requires
+- took too long to organize
+  - felt pressured to "just write code" and didn't plan until I realized I was losing too much time
+- did not complete project
+  - mostly due to lack of organization in the beginning
+  - likely could have reached out to other students and mentors for help more with roadblocks
+
+## Wins
+
+- became more familiar with use of `beforeEach()` in chai
+- I have a better understanding of what needs testing
+- I have a better understanding of how to properly setup, execute, and assert tests
 
 ---
 
-## Linting Your Code
+## Comments
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
----
+- I am planning to finish the project on my own time. I despise not having a completed product.
+- I am pretty disappointed that I was unable to finish. Certain factors contributed to this, most of which were under my control. I need to learn to reach out for help much sooner than I did and to truly commit to planning and sticking to my plan from the get-go, particularly with an aggressive time-line for a project.
+- My family has already requested a version of this to use with my niece. Therefore I need to figure out how to finish it and properly adapt it for different material.
