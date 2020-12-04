@@ -23,6 +23,7 @@ class Turn {
 
   giveFeedback() {
     this.answer === this.card.correctAnswer ? this.feedback = 'correct!' : this.feedback = 'incorrect!';
+    return this.feedback;
   }
 }
 

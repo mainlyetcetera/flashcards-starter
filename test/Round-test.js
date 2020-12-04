@@ -96,8 +96,8 @@ describe('Round', () => {
       expect(eval).to.equal(false);
     });
 
-    it('should return "correct" feedback for correct guesses', () => {
-      expect(turn.feedback).to.equal('correct!');
+    it('should return "correct" feedback for correct guesses', () => {     
+      expect(round.takeTurn(guess).feedback).to.equal('correct!');
     });
 
     it.skip('should store incorrect guesses in incorrect guesses property', () => {
