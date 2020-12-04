@@ -9,7 +9,7 @@
 - [gif](#gif)
 - [Challenges](#challenges)
 - [Wins](#wins)
-- [Comments](#comments}
+- [Comments](#comments)
 
 ## Introduction
 
