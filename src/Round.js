@@ -7,12 +7,10 @@ class Round {
   constructor(deck) {
     this.deck = deck;
     this.turns = 0;
-    this.currentCard = this.deck.cards[0];    
-    // this.turn = new Turn(this.currentCard);
+    this.currentCard = this.deck.cards[0];        
     this.turn;
     this.eval;
-    this.feedback;
-    // this.nextTurn;
+    this.feedback;    
   }
 
   returnCurrentCard() {
@@ -27,8 +25,7 @@ class Round {
     this.turns++;
     this.turn = new Turn(this.currentCard, guess);
     this.eval = this.turn.evaluateGuess();
-    this.feedback = this.turn.giveFeedback();
-    // this.currentCard = this.deck.cards[this.turns];
+    this.feedback = this.turn.giveFeedback();    
     this.incrementCard();
     return {
       eval: this.eval,
