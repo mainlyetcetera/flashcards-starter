@@ -10,6 +10,7 @@
 - [Challenges](#challenges)
 - [Wins](#wins)
 - [Comments](#comments)
+- [Contributors](#contributors)
 
 ## Introduction
 
@@ -52,3 +53,8 @@ I unfortunately have no gif as I could not get the game to run...
 - I am planning to finish the project on my own time. I despise not having a completed product.
 - I am pretty disappointed that I was unable to finish. Certain factors contributed to this, most of which were under my control. I need to learn to reach out for help much sooner than I did and to truly commit to planning and sticking to my plan from the get-go, particularly with an aggressive time-line for a project.
 - My family has already requested a version of this to use with my niece. Therefore I need to figure out how to finish it and properly adapt it for different material.
+
+## Contributors
+
+- Eric Campbell
+- Joe Haefling
