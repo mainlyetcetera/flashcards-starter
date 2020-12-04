@@ -28,11 +28,7 @@ class Round {
     if (!this.eval) {
       this.incorrectGuesses.push(this.currentCard.id);
     }
-  }
-
-  calculatePercentCorrect() {    
-    return Math.round((this.incorrectGuesses.length / this.turns) * 100);
-  }
+  }  
 
   takeTurn(guess) {    
     this.turns++;
@@ -45,6 +41,14 @@ class Round {
       newTurn: this.turn,
       newCard: this.returnCurrentCard()
     };
+  }
+
+  calculatePercentCorrect() {
+    return Math.round((this.incorrectGuesses.length / this.turns) * 100);
+  }
+
+  endRound() {
+    return `Round over! You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
   }
 }
 
