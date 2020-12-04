@@ -124,7 +124,7 @@ describe('Round', () => {
       expect(round.incorrectGuesses).to.not.equal(undefined);
     });
 
-    it.skip('should be able to calculate percentage of correct answers', () => {
+    it('should be able to calculate percentage of correct answers', () => {
       round.takeTurn(guess); // correct
       round.takeTurn(guess); // incorrect
 
