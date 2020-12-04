@@ -30,6 +30,10 @@ class Round {
     }
   }
 
+  calculatePercentCorrect() {    
+    return Math.round((this.incorrectGuesses.length / this.turns) * 100);
+  }
+
   takeTurn(guess) {    
     this.turns++;
     this.turn = new Turn(this.currentCard, guess);

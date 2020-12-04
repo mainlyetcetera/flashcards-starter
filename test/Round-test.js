@@ -125,11 +125,15 @@ describe('Round', () => {
     });
 
     it('should be able to calculate percentage of correct answers', () => {
-      round.takeTurn(guess); // correct
-      round.takeTurn(guess); // incorrect
+      round.takeTurn(guess);
+      round.takeTurn('blah');
 
       expect(round.turns).to.equal(2);
-      expect(round.calculatePercentCorrect()).to.equal(50);  
+      expect(round.calculatePercentCorrect()).to.equal(50);
+
+      round.takeTurn('rawr');
+
+      expect(round.calculatePercentCorrect()).to.equal(67);
     });
 
     it.skip('should be able to end the round', () => {
