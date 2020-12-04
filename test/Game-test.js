@@ -27,4 +27,29 @@ describe('Game', () => {
   it.skip('should have currentRound property', () => {
     expect(game.round).to.be.an.instanceof(Round);
   });
+
+  describe('start method', () => {
+
+    it.skip('should create cards', () => {
+      const cardProps1 = {
+        id: 1,
+        question: '4 + 5',
+        answers: ['6', '7', '9'],
+        correctAnswer: '9'
+      };
+
+      const cardProps2 = {
+        id: 2,
+        question: '1 + 2',
+        answers: ['3', '4', '5'],
+        correctAnswer: '3'
+      };
+
+      const first = start(cardProps1);
+      const second = start(cardProps2);
+
+      expect(first).to.deep.equal(card1);
+      expect(second).to.deep.equal(card2);
+    });
+  });
 });
