@@ -29,42 +29,51 @@ describe('Game', () => {
   });
 
   describe('start method', () => {
-    let cardProps1, cardProps2, newCards, newDeck;
+    let cardProps, newCard1Props, newCard1, newCard2, newCards, newDeck;
 
     beforeEach(() => {
-      cardProps1 = {
-        id: 1,
-        question: '4 + 5',
-        answers: ['6', '7', '9'],
-        correctAnswer: '9'
-      };
+      const cardProps = [
+        {
+          id: 1,
+          question: '4 + 5',
+          answers: ['6', '7', '9'],
+          correctAnswer: '9'
+        },
+        {
+          id: 2,
+          question: '1 + 2',
+          answers: ['3', '4', '5'],
+          correctAnswer: '3'
+        }
+      ];
 
-      cardProps2 = {
-        id: 2,
-        question: '1 + 2',
-        answers: ['3', '4', '5'],
-        correctAnswer: '3'
-      };
+      newCard1Props = cardProps[0];
+      newCard1 = new Card(newCard1Props.id, newCard1Props.question, newCard1Props.answers, newCard1Props.correctAnswer);
 
-      newCards = [];
+      newCard2Props = cardProps[1];
+      newCard2 = new Card(newCard2Props.id, newCard2Props.question, newCard2Props.answers, newCard2Props.correctAnswer);
+
+      newCards = [newCard1, newCard2];
 
       newDeck = new Deck(newCards);
     });
 
     it.skip('should create cards', () => {
-      const first = start(cardProps1);
-      const second = start(cardProps2);
+      const addCards = start(cardProps);      
 
-      expect(first).to.deep.equal(card1);
-      expect(second).to.deep.equal(card2);
+      expect(newCards[0]).to.be.an.instanceof(Card);
+      expect(newCards[1]).to.be.an.instanceof(Card);
     });
 
     it.skip('should add cards to deck', () => {
-      const first = start(cardProps1);
-      const second = start(cardProps2);
-
       expect(newDeck.cards).to.have.a.lengthof(2);
       expect(newDeck.cards).to.deep.equal([card1, card2]);
+    });
+
+    it.skip('should create a new Round', () => {
+      const newRound = start(cardProps);
+
+      expect(newRound).to.be.an.instanceof(Round);
     });
   });
 });
