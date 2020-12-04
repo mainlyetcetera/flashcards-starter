@@ -109,17 +109,17 @@ describe('Round', () => {
     it('should store incorrect guesses in incorrect guesses property', () => {
       round.takeTurn('42');
       expect(round.incorrectGuesses).lengthOf(1);
-      expect(round.incorrectGuesses).to.deep.equal(['42']);
+      expect(round.incorrectGuesses).to.deep.equal([1]);
 
       round.takeTurn('blah');
       expect(round.incorrectGuesses).lengthOf(2);
-      expect(round.incorrectGuesses).to.deep.equal(['42', 'blah']);
+      expect(round.incorrectGuesses).to.deep.equal([1, 2]);
     });  
   });
 
   describe('the end game', () => {
     
-    it.skip('should have an incorrectGuesses property', () => {
+    it('should have an incorrectGuesses property', () => {
       expect(round.incorrectGuesses).to.be.an('array');
       expect(round.incorrectGuesses).to.not.equal(undefined);
     });

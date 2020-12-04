@@ -26,7 +26,7 @@ class Round {
     this.eval = this.turn.evaluateGuess();
     this.feedback = this.turn.giveFeedback();
     if (!this.eval) {
-      this.incorrectGuesses.push(guess);
+      this.incorrectGuesses.push(this.currentCard.id);
     }
   }
 
