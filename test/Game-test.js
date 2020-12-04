@@ -53,10 +53,12 @@ describe('Game', () => {
 
     it('should create cards', () => {
       game.start(cardProps);
-      const testDeck = game.round.deck;
+      const testDeck = game.deck;
 
       expect(testDeck.cards[0]).to.be.an.instanceof(Card);
+      expect(testDeck.cards[0]).to.deep.equal(card1);
       expect(testDeck.cards[1]).to.be.an.instanceof(Card);
+      expect(testDeck.cards[1]).to.deep.equal(card2);
     });
 
     it.skip('should add cards to deck', () => {
