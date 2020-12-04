@@ -8,10 +8,10 @@ const Turn = require('../src/Turn');
 const Game = require('../src/Game');
 
 describe('Game', () => {
-  let card1, card2, card3, cards, deck, turn, guess, round, game;
+  let cardProps, card1, card2, card3, cards, deck, turn, guess, round, game;
 
   beforeEach(() => {
-    const cardProps = [
+    cardProps = [
       {
         id: 1,
         question: '4 + 5',
@@ -51,7 +51,7 @@ describe('Game', () => {
 
   describe('start method', () => {    
 
-    it.skip('should create cards', () => {
+    it('should create cards', () => {
       game.start(cardProps);
       const testDeck = game.round.deck;
 
