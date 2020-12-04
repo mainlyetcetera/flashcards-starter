@@ -29,27 +29,42 @@ describe('Game', () => {
   });
 
   describe('start method', () => {
+    let cardProps1, cardProps2, newCards, newDeck;
 
-    it.skip('should create cards', () => {
-      const cardProps1 = {
+    beforeEach(() => {
+      cardProps1 = {
         id: 1,
         question: '4 + 5',
         answers: ['6', '7', '9'],
         correctAnswer: '9'
       };
 
-      const cardProps2 = {
+      cardProps2 = {
         id: 2,
         question: '1 + 2',
         answers: ['3', '4', '5'],
         correctAnswer: '3'
       };
 
+      newCards = [];
+
+      newDeck = new Deck(newCards);
+    });
+
+    it.skip('should create cards', () => {
       const first = start(cardProps1);
       const second = start(cardProps2);
 
       expect(first).to.deep.equal(card1);
       expect(second).to.deep.equal(card2);
+    });
+
+    it.skip('should add cards to deck', () => {
+      const first = start(cardProps1);
+      const second = start(cardProps2);
+
+      expect(newDeck.cards).to.have.a.lengthof(2);
+      expect(newDeck.cards).to.deep.equal([card1, card2]);
     });
   });
 });
