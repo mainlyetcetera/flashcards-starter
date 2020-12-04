@@ -106,7 +106,7 @@ describe('Round', () => {
       expect(feedback).to.equal('incorrect!');
     });
 
-    it.skip('should store incorrect guesses in incorrect guesses property', () => {
+    it('should store incorrect guesses in incorrect guesses property', () => {
       expect(round.incorrectGuesses).lengthOf(1);
 
       round.takeTurn(guess);
