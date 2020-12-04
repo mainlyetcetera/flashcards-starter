@@ -5,7 +5,6 @@ const Round = require('../src/Round');
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 const Turn = require('../src/Turn');
-const Game = require('../src/Game');
 
 describe('Round', () => {
   let card1, card2, card3, cards, deck, turn, round, guess;
@@ -18,88 +17,103 @@ describe('Round', () => {
     
     deck = new Deck(cards);
     
-    turn = new Turn('9', card1);
+    turn = new Turn(card1, '9');
     guess = turn.answer;
 
     round = new Round(deck);
   });
 
-  it.skip('should be a function', () => expect(Round).to.be.a('function'));
+  it('should be a function', () => expect(Round).to.be.a('function'));
 
-  it.skip('should be an instance of Round', () => {
+  it('should be an instance of Round', () => {
     expect(round).to.be.an.instanceof(Round);
   });
 
-  it.skip('should have the first card of the deck saved', () => {
-    expect(round.returnCurrentCard()).to.deep.equal(deck.cards[0]);
+  it('should have the first card of the deck saved', () => {  
+    expect(round.returnCurrentCard()).to.deep.equal(deck.cards[0]);    
   });
 
-  it.skip('should have a deck property which is a list of cards', () => {
-    expect(round.deck).to.be.deep.equal(cards);
+  it('should have a deck property which is a list of cards', () => {  
+    expect(round.deck.cards).to.be.eql(cards);
   });
 
   describe('takeTurn', () => {
     let newTurn, guess, correctAnswer, currentCard;
 
-    it.skip('should know what turn it\'s on', () => {
-      round.takeTurn(guess);
+    beforeEach(() => {
+      guess = turn.answer;      
+      correctAnswer = cards[0].correctAnswer;
+      currentCard = turn.card;
+    });
+
+
+
+    it('should know what turn it\'s on', () => {  
+      round.takeTurn(guess);    
       expect(round.turns).to.equal(1);
 
       round.takeTurn(guess);
       expect(round.turns).to.equal(2);
     });
 
-    beforeEach(() => {
-      newTurn = round.takeTurn(guess);
-      guess = turn.answer;
-      correctAnswer = cards[0].correctAnswer;
-      currentCard = turn.card;
+    it('should make a new Turn instance', () => {
+      const newTurn = round.takeTurn(guess).newTurn;
+
+      expect(newTurn).to.be.an.instanceof(Turn);
     });
 
-    it.skip('should make a new Turn instance', () => {
-      const newTurn = round.takeTurn(guess);
-
-      expect(newTurn).to.be.an.instanceof(Round);
-    });
-
-    it.skip('should update turn count upon correct answer', () => {      
+    it('should update turn count upon correct answer', () => {
+      round.takeTurn(guess);
       expect(guess).to.be.equal(correctAnswer);
       expect(round.turns).to.equal(1);
     });
     
-    it.skip('should update turn count upon incorrect answer', () => {
+    it('should update turn count upon incorrect answer', () => {
+      round.takeTurn(guess);
+      guess = '6';
       expect(guess).to.not.be.equal(correctAnswer);
       expect(round.turns).to.equal(1);
     });
 
-    it.skip('should make next card current card', () => {
-      expect(currentCard).to.be.deep.equal(cards[0]);
-
-      round.takeTurn(guess);
-      expect(currentCard).to.be.deep.equal(cards[1]);
+    it('should make next card current card', () => {    
+      expect(round.returnCurrentCard()).to.be.deep.equal(currentCard);
+     
+      const stuff = round.takeTurn(guess).newCard;     
+      currentCard = round.currentCard;
+      expect(round.returnCurrentCard()).to.be.deep.equal(stuff);
     });
 
-    it.skip('should say correct guess is correct', () => {
+    it('should say correct guess is correct', () => {      
       expect(guess).to.equal(correctAnswer);
-      expect(turn.evaluateGuess()).to.equal(true);
+      expect(round.takeTurn(guess).eval).to.equal(true);
     });
 
-    it.skip('should say incorrect guess is incorrect', () => {
-      const turn = new Turn('mainlyetcetera', card);
-    
-      expect(turn.answer).to.not.equal(correctAnswer);
-      expect(turn.evaluateGuess()).to.equal(false);
+    it('should say incorrect guess is incorrect', () => {
+      const newTurn = new Turn(card1, 'mainlyetcetera');
+      const eval = newTurn.evaluateGuess();
+      
+      expect(newTurn.answer).to.not.equal(correctAnswer);
+      expect(eval).to.equal(false);
     });
 
-    it.skip('should return "correct" feedback for correct guesses', () => {
-      expect(turn.feedback).to.equal('correct!');
+    it('should return "correct" feedback for correct guesses', () => {     
+      expect(round.takeTurn(guess).feedback).to.equal('correct!');
     });
 
-    it.skip('should store incorrect guesses in incorrect guesses property', () => {
+    it('should return "incorrect" feedback for incorrect guesses', () => {      
+      const feedback = round.takeTurn('8').feedback;
+      
+      expect(feedback).to.equal('incorrect!');
+    });
+
+    it('should store incorrect guesses in incorrect guesses property', () => {
+      round.takeTurn('42');
       expect(round.incorrectGuesses).lengthOf(1);
+      expect(round.incorrectGuesses).to.deep.equal(['42']);
 
-      round.takeTurn(guess);
+      round.takeTurn('blah');
       expect(round.incorrectGuesses).lengthOf(2);
+      expect(round.incorrectGuesses).to.deep.equal(['42', 'blah']);
     });  
   });
 
