@@ -100,6 +100,13 @@ describe('Round', () => {
       expect(round.takeTurn(guess).feedback).to.equal('correct!');
     });
 
+    it.skip('should return "incorrect" feedback for incorrect guesses', () => {
+      // incorrect guess
+      const feedback = round.takeTurn('8').feedback;
+      console.log(feedback);
+      expect(feedback).to.equal('incorrect!');
+    });
+
     it.skip('should store incorrect guesses in incorrect guesses property', () => {
       expect(round.incorrectGuesses).lengthOf(1);
 
