@@ -69,8 +69,8 @@ describe('Game', () => {
       expect(testDeck.cards).to.deep.equal([card1, card2, card3]);
     });
 
-    it.skip('should create a new Round', () => {
-      const newRound = start(cardProps);
+    it('should create a new Round', () => {
+      const newRound = game.start(cardProps);
 
       expect(newRound).to.be.an.instanceof(Round);
     });
