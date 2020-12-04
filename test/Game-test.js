@@ -5,6 +5,7 @@ const Round = require('../src/Round');
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 const Turn = require('../src/Turn');
+const Game = require('../src/Game');
 
 describe('Game', () => {
   let game;
@@ -24,7 +25,7 @@ describe('Game', () => {
     game = new Game(deck, round);
   });
 
-  it.skip('should have currentRound property', () => {
+  it('should have currentRound property', () => {
     expect(game.round).to.be.an.instanceof(Round);
   });
 
